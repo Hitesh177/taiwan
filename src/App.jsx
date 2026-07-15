@@ -16,6 +16,7 @@ function Navbar() {
       <div className="navbar-inner">
         <div className="navbar-logo">
           <img src="/taiwan-experience-logo.png" alt="Taiwan Experience" className="navbar-logo-img" />
+          <span className="navbar-logo-text">TAIWAN EXPERIENCE</span>
         </div>
 
         <ul className="navbar-links">
