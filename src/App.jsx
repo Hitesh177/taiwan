@@ -112,14 +112,15 @@ function DestinationCards() {
         <p className="destinations-subtitle">Explore Taiwan by region — from bustling cities to serene coastlines</p>
         <div className="destinations-grid">
           {destinationsList.map((d, i) => (
-            <div key={d.name} className="destination-card" style={{ animationDelay: `${i * 0.04}s` }}>
-              <div className="dest-card-bg" style={{ background: d.color }}>
+            <div key={d.name} className="destination-card" style={{ animationDelay: `${i * 0.05}s` }}>
+              <div className="dest-card-image" style={{ background: `linear-gradient(135deg, ${d.color}, ${d.color}dd)` }}>
                 <span className="dest-card-emoji">{d.emoji}</span>
+                <div className="dest-card-image-overlay" />
               </div>
               <div className="dest-card-body">
                 <h3 className="dest-card-name">{d.name}</h3>
-                <span className="dest-card-region">{d.region}</span>
-                <span className="dest-card-count">{d.count} stories</span>
+                <p className="dest-card-desc">Discover {d.name.toLowerCase()}'s hidden gems, local flavors, and unforgettable experiences.</p>
+                <span className="dest-card-explore">Explore <span className="dest-card-arrow">↗</span></span>
               </div>
             </div>
           ))}
