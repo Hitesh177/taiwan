@@ -81,28 +81,51 @@ function Hero() {
   )
 }
 
-function FeaturedPost() {
-  const post = posts[0]
+const destinationsList = [
+  { name: 'Taipei', region: 'Northern Taiwan', emoji: '🏙️', color: '#1a5276', count: 24 },
+  { name: 'New Taipei', region: 'Northern Taiwan', emoji: '🏞️', color: '#2e86c1', count: 18 },
+  { name: 'Taichung', region: 'Central Taiwan', emoji: '🎨', color: '#d4a017', count: 20 },
+  { name: 'Tainan', region: 'Southern Taiwan', emoji: '🏛️', color: '#c0392b', count: 22 },
+  { name: 'Kaohsiung', region: 'Southern Taiwan', emoji: '🌊', color: '#1e8449', count: 19 },
+  { name: 'Hualien', region: 'Eastern Taiwan', emoji: '🏔️', color: '#6c3483', count: 15 },
+  { name: 'Taitung', region: 'Eastern Taiwan', emoji: '🌅', color: '#e67e22', count: 12 },
+  { name: 'Taoyuan', region: 'Northern Taiwan', emoji: '✈️', color: '#16a085', count: 10 },
+  { name: 'Yilan', region: 'Eastern Taiwan', emoji: '♨️', color: '#27ae60', count: 11 },
+  { name: 'Hsinchu', region: 'Northern Taiwan', emoji: '💻', color: '#2980b9', count: 8 },
+  { name: 'Chiayi', region: 'Southern Taiwan', emoji: '🚂', color: '#8e44ad', count: 9 },
+  { name: 'Nantou', region: 'Central Taiwan', emoji: '🌲', color: '#2c3e50', count: 14 },
+  { name: 'Pingtung', region: 'Southern Taiwan', emoji: '🏖️', color: '#f39c12', count: 10 },
+  { name: 'Miaoli', region: 'Central Taiwan', emoji: '🍓', color: '#e74c3c', count: 7 },
+  { name: 'Changhua', region: 'Central Taiwan', emoji: '🛕', color: '#d35400', count: 6 },
+  { name: 'Yunlin', region: 'Central Taiwan', emoji: '🌾', color: '#7d6608', count: 5 },
+  { name: 'Penghu', region: 'Outlying Islands', emoji: '🏝️', color: '#3498db', count: 8 },
+  { name: 'Kinmen', region: 'Outlying Islands', emoji: '🏯', color: '#a04000', count: 6 },
+  { name: 'Matsu', region: 'Outlying Islands', emoji: '⛰️', color: '#5d6d7e', count: 4 },
+  { name: 'Keelung', region: 'Northern Taiwan', emoji: '⛵', color: '#1a5276', count: 9 },
+]
+
+function DestinationCards() {
   return (
-    <div className="featured-banner">
-      <div className="featured-card">
-        <div className="featured-image-placeholder" style={{ background: post.bg }}>
-          <span>{post.emoji}</span>
-          <p>Featured Post</p>
-        </div>
-        <div className="featured-content">
-          <span className={`tag ${post.tagClass}`}>{post.tag}</span>
-          <div className="post-meta">
-            <span>{post.date}</span>
-            <span className="post-meta-dot" />
-            <span>{post.readTime}</span>
-          </div>
-          <h2>{post.title}</h2>
-          <p>{post.excerpt}</p>
-          <a href="#" className="read-more">Read the story →</a>
+    <section className="destinations-section">
+      <div className="destinations-inner">
+        <h2 className="destinations-title">Where do you want to go?</h2>
+        <p className="destinations-subtitle">Explore Taiwan by region — from bustling cities to serene coastlines</p>
+        <div className="destinations-grid">
+          {destinationsList.map((d, i) => (
+            <div key={d.name} className="destination-card" style={{ animationDelay: `${i * 0.04}s` }}>
+              <div className="dest-card-bg" style={{ background: d.color }}>
+                <span className="dest-card-emoji">{d.emoji}</span>
+              </div>
+              <div className="dest-card-body">
+                <h3 className="dest-card-name">{d.name}</h3>
+                <span className="dest-card-region">{d.region}</span>
+                <span className="dest-card-count">{d.count} stories</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
@@ -268,7 +291,7 @@ export default function App() {
     <>
       <Navbar />
       <Hero />
-      <FeaturedPost />
+      <DestinationCards />
       <div className="main-content">
         <BlogGrid />
         <Sidebar />

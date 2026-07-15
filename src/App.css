@@ -270,109 +270,95 @@
   50% { opacity: 0.3; transform: translateX(-50%) translateY(12px); }
 }
 
-/* ===== FEATURED BANNER ===== */
-.featured-banner {
-  max-width: 1100px;
-  margin: -2.5rem auto 0;
-  padding: 0 1.5rem;
-  position: relative;
-  z-index: 2;
+/* ===== DESTINATION CARDS ===== */
+.destinations-section {
+  padding: 5rem 1.5rem;
+  background: var(--cream);
 }
 
-.featured-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.12);
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.destinations-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.featured-image-placeholder {
-  height: 380px;
-  background: linear-gradient(135deg, #1a5276 0%, #c0392b 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  color: white;
-}
-
-.featured-image-placeholder span {
-  font-size: 4rem;
-}
-
-.featured-image-placeholder p {
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-.featured-content {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.75rem;
-  border-radius: 100px;
-  margin-bottom: 1rem;
-}
-
-.tag-red { background: #fde8e8; color: var(--red); }
-.tag-blue { background: #dbeafe; color: var(--blue); }
-.tag-green { background: #d1fae5; color: #065f46; }
-.tag-amber { background: #fef3c7; color: #92400e; }
-.tag-purple { background: #ede9fe; color: #5b21b6; }
-
-.featured-content h2 {
+.destinations-title {
   font-family: 'Noto Serif', serif;
-  font-size: 1.9rem;
-  line-height: 1.2;
-  margin-bottom: 1rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--dark);
 }
 
-.featured-content p {
+.destinations-subtitle {
+  text-align: center;
   color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 3rem;
 }
 
-.read-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--red);
-  transition: gap 0.2s;
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
 }
 
-.read-more:hover {
-  gap: 0.7rem;
+.destination-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: heroFadeIn 0.6s ease-out both;
 }
 
-.post-meta {
+.destination-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+}
+
+.dest-card-bg {
+  height: 100px;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-bottom: 1rem;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
-.post-meta-dot {
-  width: 3px;
-  height: 3px;
-  background: var(--border);
-  border-radius: 50%;
+.destination-card:hover .dest-card-bg {
+  transform: scale(1.05);
+}
+
+.dest-card-emoji {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.dest-card-body {
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.dest-card-name {
+  font-family: 'Noto Serif', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.dest-card-region {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dest-card-count {
+  font-size: 0.72rem;
+  color: var(--red);
+  font-weight: 600;
 }
 
 /* ===== MAIN CONTENT AREA ===== */
@@ -792,11 +778,8 @@
     font-size: clamp(2.2rem, 8vw, 3.2rem);
   }
 
-  .featured-card {
-    grid-template-columns: 1fr;
-  }
-  .featured-image-placeholder {
-    height: 240px;
+  .destinations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
   .main-content {
     grid-template-columns: 1fr;
@@ -836,6 +819,8 @@
   }
 
   .blog-grid { grid-template-columns: 1fr; }
+  .destinations-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem; }
+  .destinations-section { padding: 3rem 1rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .quote-card { padding: 2rem 1.5rem; }
   .quote-card blockquote { font-size: 1.2rem; }
