@@ -1,38 +1,83 @@
+import { useState, useEffect } from 'react'
 import './App.css'
 import { posts, destinations, photoGrid } from './data/posts'
 
-function Header() {
+function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="header">
-      <nav className="nav-inner">
-        <div className="nav-logo">
-          <span className="nav-logo-flag">🇹🇼</span>
-          Taiwan Chronicles
+    <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+      <div className="navbar-inner">
+        <div className="navbar-logo">
+          <span className="navbar-logo-flag">🇹🇼</span>
+          <span>Taiwan Chronicles</span>
         </div>
-        <ul className="nav-links">
-          <li><a href="#">Home</a></li>
+
+        <ul className="navbar-links">
           <li><a href="#">Destinations</a></li>
+          <li><a href="#">Experiences</a></li>
           <li><a href="#">Food</a></li>
-          <li><a href="#">Culture</a></li>
-          <li><a href="#">Tips</a></li>
+          <li><a href="#">Cafés</a></li>
+          <li><a href="#">Blog</a></li>
           <li><a href="#">About</a></li>
         </ul>
-      </nav>
-    </header>
+
+        <div className="navbar-actions">
+          <button className="navbar-search" aria-label="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+          </button>
+          <button className="navbar-cta">Plan Your Trip</button>
+        </div>
+      </div>
+    </nav>
   )
 }
 
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-inner">
-        <span className="hero-tag">Travel Journal 2026</span>
-        <h1>Discover the <span>Heart of Asia</span></h1>
-        <p>
-          Personal stories, hidden gems, and honest guides from months of exploring
-          Taiwan's mountains, cities, and coastlines.
+      <div className="hero-video-wrapper">
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/hero-poster.jpg"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-overlay" />
+      </div>
+
+      <div className="hero-content">
+        <span className="hero-badge">Travel Journal 2026</span>
+        <h1 className="hero-title">Experience Taiwan<br />Like Never Before</h1>
+        <p className="hero-subtitle">
+          Discover hidden cafés, breathtaking mountains, vibrant night markets, unforgettable road trips, local culture, and authentic experiences across Taiwan.
         </p>
-        <p className="hero-scroll-hint">↓ scroll to explore</p>
+        <button className="hero-cta">
+          Explore Taiwan
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+
+      <div className="hero-scroll-indicator">
+        <div className="scroll-mouse">
+          <div className="scroll-dot" />
+        </div>
+        <span className="scroll-text">Scroll to Explore</span>
       </div>
     </section>
   )
@@ -221,7 +266,7 @@ function Footer() {
 export default function App() {
   return (
     <>
-      <Header />
+      <Navbar />
       <Hero />
       <FeaturedPost />
       <div className="main-content">
