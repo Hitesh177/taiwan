@@ -15,8 +15,7 @@ function Navbar() {
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="navbar-inner">
         <div className="navbar-logo">
-          <span className="navbar-logo-flag">🇹🇼</span>
-          <span>Taiwan Chronicles</span>
+          <img src="/taiwan-experience-logo.png" alt="Taiwan Experience" className="navbar-logo-img" />
         </div>
 
         <ul className="navbar-links">
@@ -60,7 +59,6 @@ function Hero() {
       </div>
 
       <div className="hero-content">
-        <span className="hero-badge">Travel Journal 2026</span>
         <h1 className="hero-title">Experience Taiwan<br />Like Never Before</h1>
         <p className="hero-subtitle">
           Discover hidden cafés, breathtaking mountains, vibrant night markets, unforgettable road trips, local culture, and authentic experiences across Taiwan.
@@ -224,10 +222,12 @@ function Footer() {
       <div className="footer-inner">
         <div className="footer-grid">
           <div className="footer-brand">
-            <div className="footer-logo">🇹🇼 Taiwan Chronicles</div>
+            <div className="footer-logo">
+              <img src="/taiwan-experience-logo.png" alt="Taiwan Experience" className="footer-logo-img" />
+              Taiwan Experience
+            </div>
             <p>
-              An independent travel blog documenting life, food, nature, and culture
-              across the beautiful island of Taiwan. All stories are personal and honest.
+              Your ultimate guide to discovering hidden cafés, breathtaking mountains, vibrant night markets, unforgettable road trips, local culture, and authentic experiences across Taiwan.
             </p>
           </div>
           <div>
@@ -251,7 +251,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 Taiwan Chronicles. Made with ❤️ in Taipei.</span>
+          <span>© 2026 Taiwan Experience. Made with ❤️ in Taipei.</span>
           <div className="footer-social">
             <a href="#">📷</a>
             <a href="#">🐦</a>

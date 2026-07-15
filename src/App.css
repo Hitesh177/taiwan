@@ -39,8 +39,10 @@
   flex-shrink: 0;
 }
 
-.navbar-logo-flag {
-  font-size: 1.3rem;
+.navbar-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 
 .navbar-links {
@@ -166,23 +168,6 @@
   padding: 0 1.5rem;
   margin-left: 8%;
   animation: heroFadeIn 1.2s ease-out forwards;
-}
-
-.hero-badge {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 0.4rem 1rem;
-  border-radius: 100px;
-  margin-bottom: 1.5rem;
-  animation: heroFadeIn 1s ease-out 0.3s both;
 }
 
 .hero-title {
@@ -730,6 +715,12 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.footer-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .footer-col-title {
