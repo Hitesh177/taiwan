@@ -64,12 +64,21 @@ function Hero() {
         <p className="hero-subtitle">
           Discover hidden cafés, breathtaking mountains, vibrant night markets, unforgettable road trips, local culture, and authentic experiences across Taiwan.
         </p>
-        <button className="hero-cta">
-          Explore Taiwan
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        <div className="hero-search">
+          <svg className="hero-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
           </svg>
-        </button>
+          <input className="hero-search-input" type="text" placeholder="Where do you want to explore?" />
+          <button className="hero-search-btn">Search</button>
+        </div>
+        <div className="hero-actions">
+          <button className="hero-cta">
+            Explore Taiwan
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div className="hero-scroll-indicator">
@@ -288,9 +297,27 @@ function Footer() {
   )
 }
 
+function CursorFollower() {
+  const [pos, setPos] = useState({ x: -100, y: -100 })
+
+  useEffect(() => {
+    const onMove = (e) => setPos({ x: e.clientX, y: e.clientY })
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
+
+  return (
+    <div
+      className="cursor-follower"
+      style={{ left: pos.x, top: pos.y }}
+    />
+  )
+}
+
 export default function App() {
   return (
     <>
+      <CursorFollower />
       <Navbar />
       <Hero />
       <DestinationCards />
