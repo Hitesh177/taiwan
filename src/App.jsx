@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import './App.css'
-import { posts, destinations, photoGrid } from './data/posts'
+import { photoGrid } from './data/posts'
+import { api } from './api'
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -25,6 +27,7 @@ function Navbar() {
           <li><a href="#">Food</a></li>
           <li><a href="#">Cafés</a></li>
           <li><a href="#">Blog</a></li>
+          <li><Link to="/essentials">Essentials</Link></li>
           <li><a href="#">About</a></li>
         </ul>
 
@@ -92,26 +95,26 @@ function Hero() {
 }
 
 const destinationsList = [
-  { name: 'Taipei', region: 'Northern Taiwan', emoji: '🏙️', color: '#1a5276', count: 24 },
-  { name: 'New Taipei', region: 'Northern Taiwan', emoji: '🏞️', color: '#2e86c1', count: 18 },
-  { name: 'Taichung', region: 'Central Taiwan', emoji: '🎨', color: '#d4a017', count: 20 },
-  { name: 'Tainan', region: 'Southern Taiwan', emoji: '🏛️', color: '#c0392b', count: 22 },
-  { name: 'Kaohsiung', region: 'Southern Taiwan', emoji: '🌊', color: '#1e8449', count: 19 },
-  { name: 'Hualien', region: 'Eastern Taiwan', emoji: '🏔️', color: '#6c3483', count: 15 },
-  { name: 'Taitung', region: 'Eastern Taiwan', emoji: '🌅', color: '#e67e22', count: 12 },
-  { name: 'Taoyuan', region: 'Northern Taiwan', emoji: '✈️', color: '#16a085', count: 10 },
-  { name: 'Yilan', region: 'Eastern Taiwan', emoji: '♨️', color: '#27ae60', count: 11 },
-  { name: 'Hsinchu', region: 'Northern Taiwan', emoji: '💻', color: '#2980b9', count: 8 },
-  { name: 'Chiayi', region: 'Southern Taiwan', emoji: '🚂', color: '#8e44ad', count: 9 },
-  { name: 'Nantou', region: 'Central Taiwan', emoji: '🌲', color: '#2c3e50', count: 14 },
-  { name: 'Pingtung', region: 'Southern Taiwan', emoji: '🏖️', color: '#f39c12', count: 10 },
+  { name: 'Taipei', region: 'Northern Taiwan', emoji: '🏙️', color: '#1a5276', count: 24, image: '/taipei-card.jpg' },
+  { name: 'New Taipei', region: 'Northern Taiwan', emoji: '🏞️', color: '#2e86c1', count: 18, image: '/new-taipei-card.jpg' },
+  { name: 'Taichung', region: 'Central Taiwan', emoji: '🎨', color: '#d4a017', count: 20, image: '/taichung-card.jpg' },
+  { name: 'Tainan', region: 'Southern Taiwan', emoji: '🏛️', color: '#c0392b', count: 22, image: '/tainan-card.jpg' },
+  { name: 'Kaohsiung', region: 'Southern Taiwan', emoji: '🌊', color: '#1e8449', count: 19, image: '/kaohsiung-card.jpg' },
+  { name: 'Hualien', region: 'Eastern Taiwan', emoji: '🏔️', color: '#6c3483', count: 15, image: '/hualien-card.jpg' },
+  { name: 'Taitung', region: 'Eastern Taiwan', emoji: '🌅', color: '#e67e22', count: 12, image: '/taitung-card.jpg' },
+  { name: 'Taoyuan', region: 'Northern Taiwan', emoji: '✈️', color: '#16a085', count: 10, image: '/taoyuan-card.jpg' },
+  { name: 'Yilan', region: 'Eastern Taiwan', emoji: '♨️', color: '#27ae60', count: 11, image: '/yilan-card.jpg' },
+  { name: 'Hsinchu', region: 'Northern Taiwan', emoji: '💻', color: '#2980b9', count: 8, image: '/hsinchu-card.jpg' },
+  { name: 'Chiayi', region: 'Southern Taiwan', emoji: '🚂', color: '#8e44ad', count: 9, image: '/chiayi-card.jpg' },
+  { name: 'Nantou', region: 'Central Taiwan', emoji: '🌲', color: '#2c3e50', count: 14, image: '/nantou-card.jpg' },
+  { name: 'Pingtung', region: 'Southern Taiwan', emoji: '🏖️', color: '#f39c12', count: 10, image: '/pingtung-card.jpg' },
   { name: 'Miaoli', region: 'Central Taiwan', emoji: '🍓', color: '#e74c3c', count: 7 },
-  { name: 'Changhua', region: 'Central Taiwan', emoji: '🛕', color: '#d35400', count: 6 },
-  { name: 'Yunlin', region: 'Central Taiwan', emoji: '🌾', color: '#7d6608', count: 5 },
-  { name: 'Penghu', region: 'Outlying Islands', emoji: '🏝️', color: '#3498db', count: 8 },
-  { name: 'Kinmen', region: 'Outlying Islands', emoji: '🏯', color: '#a04000', count: 6 },
-  { name: 'Matsu', region: 'Outlying Islands', emoji: '⛰️', color: '#5d6d7e', count: 4 },
-  { name: 'Keelung', region: 'Northern Taiwan', emoji: '⛵', color: '#1a5276', count: 9 },
+  { name: 'Changhua', region: 'Central Taiwan', emoji: '🛕', color: '#d35400', count: 6, image: '/changhua-card.jpg' },
+  { name: 'Yunlin', region: 'Central Taiwan', emoji: '🌾', color: '#7d6608', count: 5, image: '/yunlin-card.jpg' },
+  { name: 'Penghu', region: 'Outlying Islands', emoji: '🏝️', color: '#3498db', count: 8, image: '/penghu-card.jpg' },
+  { name: 'Kinmen', region: 'Outlying Islands', emoji: '🏯', color: '#a04000', count: 6, image: '/kinmen-card.jpg' },
+  { name: 'Matsu', region: 'Outlying Islands', emoji: '⛰️', color: '#5d6d7e', count: 4, image: '/matsu-card.jpg' },
+  { name: 'Keelung', region: 'Northern Taiwan', emoji: '⛵', color: '#1a5276', count: 9, image: '/keelung-card.jpg' },
 ]
 
 function DestinationCards() {
@@ -123,8 +126,12 @@ function DestinationCards() {
         <div className="destinations-grid">
           {destinationsList.map((d, i) => (
             <div key={d.name} className="destination-card" style={{ animationDelay: `${i * 0.05}s` }}>
-              <div className="dest-card-image" style={{ background: `linear-gradient(135deg, ${d.color}, ${d.color}dd)` }}>
-                <span className="dest-card-emoji">{d.emoji}</span>
+              <div className="dest-card-image" style={{
+                background: d.image
+                  ? `url(${d.image}) center/cover no-repeat`
+                  : `linear-gradient(135deg, ${d.color}, ${d.color}dd)`
+              }}>
+                {!d.image && <span className="dest-card-emoji">{d.emoji}</span>}
                 <div className="dest-card-image-overlay" />
               </div>
               <div className="dest-card-body">
@@ -141,43 +148,111 @@ function DestinationCards() {
 }
 
 function BlogGrid() {
-  const gridPosts = posts.slice(1)
-  return (
-    <div>
-      <h2 className="section-title">🗺 Recent Dispatches</h2>
-      <div className="blog-grid">
-        {gridPosts.map(post => (
-          <div key={post.id} className="blog-card">
-            <div className="card-image-placeholder" style={{ background: post.bg }}>
-              {post.emoji}
-            </div>
-            <div className="card-body">
-              <span className={`tag ${post.tagClass}`}>{post.tag}</span>
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-              <div className="post-meta">
-                <span>{post.date}</span>
-                <span className="post-meta-dot" />
-                <span>{post.readTime}</span>
+  const [posts, setPosts] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    api.getPosts()
+      .then(data => setPosts(Array.isArray(data) ? data : []))
+      .catch(() => setPosts([]))
+      .finally(() => setLoading(false))
+  }, [])
+
+  const getCardStyle = (post) => {
+    const cat = (post.category_name || '').toLowerCase()
+    const styles = {
+      food: { emoji: '🍜', bg: 'linear-gradient(135deg, #7d6608, #d4ac0d)' },
+      culture: { emoji: '🏮', bg: 'linear-gradient(135deg, #922b21, #d35400)' },
+      adventure: { emoji: '🏔️', bg: 'linear-gradient(135deg, #1a5276, #117a65)' },
+      hiking: { emoji: '🥾', bg: 'linear-gradient(135deg, #145a32, #1e8449)' },
+      cafés: { emoji: '☕', bg: 'linear-gradient(135deg, #6e2f1a, #ca6f1e)' },
+      cafes: { emoji: '☕', bg: 'linear-gradient(135deg, #6e2f1a, #ca6f1e)' },
+      'night markets': { emoji: '🌙', bg: 'linear-gradient(135deg, #4a235a, #7d3c98)' },
+      'travel tips': { emoji: '✈️', bg: 'linear-gradient(135deg, #1c2833, #2e4053)' },
+      'road trips': { emoji: '🚗', bg: 'linear-gradient(135deg, #1e3a5f, #154360)' },
+    }
+    for (const [key, val] of Object.entries(styles)) {
+      if (cat.includes(key)) return val
+    }
+    return { emoji: '📍', bg: 'linear-gradient(135deg, #2c3e50, #5d6d7e)' }
+  }
+
+  if (loading) {
+    return (
+      <div>
+        <h2 className="section-title">Recent Dispatches</h2>
+        <div className="blog-grid" style={{ opacity: 0.4 }}>
+          {[1,2,3].map(i => (
+            <div key={i} className="blog-card">
+              <div className="card-image-placeholder" style={{ background: '#2c3e50', height: 180 }} />
+              <div className="card-body">
+                <div style={{ height: 20, background: '#34495e', borderRadius: 4, marginBottom: 8, width: '60%' }} />
+                <div style={{ height: 14, background: '#34495e', borderRadius: 4, marginBottom: 4, width: '80%' }} />
+                <div style={{ height: 14, background: '#34495e', borderRadius: 4, width: '40%' }} />
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+    )
+  }
+
+  return (
+    <div>
+      <h2 className="section-title">Recent Dispatches</h2>
+      {posts.length === 0 ? (
+        <p style={{ color: '#888', textAlign: 'center', padding: '40px 0' }}>
+          No posts yet. Check back soon for stories from Taiwan!
+        </p>
+      ) : (
+        <div className="blog-grid">
+          {posts.map(post => {
+            const style = getCardStyle(post)
+            return (
+              <Link key={post.id} to={`/post/${post.slug}`} className="blog-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <div
+                  className="card-image-placeholder"
+                  style={post.featured_image ? { background: `url(${post.featured_image}) center/cover no-repeat` } : { background: style.bg }}
+                >
+                  {!post.featured_image && style.emoji}
+                </div>
+                <div className="card-body">
+                  {post.category_name && <span className="tag">{post.category_name}</span>}
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                  <div className="post-meta">
+                    <span>{post.published_at ? new Date(post.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) : ''}</span>
+                    <span className="post-meta-dot" />
+                    <span>{post.reading_time} min read</span>
+                  </div>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
 
 function Sidebar() {
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    api.getCategories()
+      .then(data => setCategories(Array.isArray(data) ? data : []))
+      .catch(() => setCategories([]))
+  }, [])
+
   return (
     <aside className="sidebar">
       <div className="sidebar-widget">
         <h3 className="widget-title">Destinations</h3>
         <div className="destinations-list">
-          {destinations.map(d => (
-            <div key={d.name} className="destination-item">
-              <span>{d.name}</span>
-              <span className="count">{d.count}</span>
+          {categories.map(c => (
+            <div key={c.id} className="destination-item">
+              <span>{c.name}</span>
+              <span className="count">{c.post_count}</span>
             </div>
           ))}
         </div>
@@ -310,13 +385,58 @@ function CursorFollower() {
     <div
       className="cursor-follower"
       style={{ left: pos.x, top: pos.y }}
-    />
+    >
+      🧋
+    </div>
+  )
+}
+
+function ConstructionBanner() {
+  const [dismissed, setDismissed] = useState(false)
+
+  if (dismissed) return null
+
+  return (
+    <div className="construction-overlay" onClick={() => setDismissed(true)}>
+      <div className="construction-modal" onClick={e => e.stopPropagation()}>
+        <button className="construction-close" onClick={() => setDismissed(true)}>×</button>
+        <div className="construction-icon">🚧</div>
+        <h2 className="construction-title">Hey, this site's still cooking</h2>
+        <p className="construction-text">
+          Yep, it's a work in progress. I'm building this thing out as I go — adding guides,
+          destination pages, and blog posts from my travels around Taiwan. Some stuff works,
+          some stuff is still being written. Bear with me.
+        </p>
+        <div className="construction-details">
+          <div className="construction-item">
+            <span className="construction-check">✅</span>
+            <span>Essentials guides — these are actually done</span>
+          </div>
+          <div className="construction-item">
+            <span className="construction-check">🔄</span>
+            <span>Destination pages — still building these out</span>
+          </div>
+          <div className="construction-item">
+            <span className="construction-check">🔄</span>
+            <span>Food & café reviews — slowly but surely</span>
+          </div>
+          <div className="construction-item">
+            <span className="construction-check">🔄</span>
+            <span>Blog posts — more coming every week</span>
+          </div>
+        </div>
+        <button className="construction-btn" onClick={() => setDismissed(true)}>
+          Okay, show me what's ready
+        </button>
+      </div>
+    </div>
   )
 }
 
 export default function App() {
   return (
     <>
+      <ConstructionBanner />
       <CursorFollower />
       <Navbar />
       <Hero />

@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.vercel
+
+# Uploaded media
+uploads/
+
+# SQLite database
+*.db
+*.db-wal
+*.db-shm
